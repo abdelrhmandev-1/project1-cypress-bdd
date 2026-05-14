@@ -1,0 +1,17 @@
+{
+  "firstName": "Abdelrhman",
+  "lastName": "Test",
+  "dob": "1998-05-15",
+  "street": "Alexandria Street",
+  "postalCode": "12345",
+  "city": "Alexandria",
+  "state": "Alexandria",
+  "country": "Egypt",
+  "phone": "01012345678",
+  "email": "abdelrhman_test@example.com",
+  "password": "Test@12345",
+  "searchItem": "Pliers"
+  "validProduct": "hammer",
+  "invalidProduct": "zzzzzz",
+  "category": "Hand Tools"
+}
