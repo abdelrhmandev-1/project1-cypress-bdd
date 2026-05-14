@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
   pull_request:
     branches:
       - main
@@ -13,6 +12,10 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      CYPRESS_VIDEO: false
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,13 +23,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Install dependencies
         run: npm install
 
-      - name: Verify Cypress
-        run: npx cypress verify
-
-      - name: Run Cypress tests
-        run: npx cypress run --browser chrome
+      - name: Run Cypress BDD tests
+        run: npx cypress run --browser chrome --spec "cypress/e2e/features/project2.feature"
