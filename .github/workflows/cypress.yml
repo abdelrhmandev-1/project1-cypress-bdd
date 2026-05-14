@@ -10,11 +10,20 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          command: npm run cy:run
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        run: npm run cy:run -- --browser chrome
