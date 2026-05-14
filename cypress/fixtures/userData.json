@@ -10,7 +10,7 @@
   "phone": "01012345678",
   "email": "abdelrhman_test@example.com",
   "password": "Test@12345",
-  "searchItem": "Pliers"
+  "searchItem": "Pliers",
   "validProduct": "hammer",
   "invalidProduct": "zzzzzz",
   "category": "Hand Tools"
