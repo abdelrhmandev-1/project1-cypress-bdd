@@ -4,17 +4,10 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      CYPRESS_VIDEO: false
 
     steps:
       - name: Checkout code
@@ -28,16 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Show project files
-        run: |
-          pwd
-          ls
-          ls cypress
-          ls cypress/e2e
-          ls cypress/e2e/features
-
-      - name: Verify Cypress
-        run: npx cypress verify
-
       - name: Run Cypress tests
-        run: npx cypress run --browser electron --spec "cypress/e2e/features/project2.feature"
+        run: npx cypress run --browser electron
+
+      - name: Upload Cypress report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-report
+          path: cypress/reports
