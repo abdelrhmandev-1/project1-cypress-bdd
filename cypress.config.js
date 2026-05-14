@@ -10,17 +10,6 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
-  reporter: "mochawesome",
-
-  reporterOptions: {
-    reportDir: "cypress/reports",
-    overwrite: false,
-    html: true,
-    json: true,
-    charts: true,
-    reportPageTitle: "Cypress Test Report"
-  },
-
   e2e: {
     baseUrl: "https://practicesoftwaretesting.com",
 
@@ -35,7 +24,7 @@ module.exports = defineConfig({
       on(
         "file:preprocessor",
         createBundler({
-          plugins: [createEsbuildPlugin(config)]
+          plugins: [createEsbuildPlugin(config)],
         })
       );
 
