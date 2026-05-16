@@ -7,8 +7,10 @@ const homePage = new HomePage();
 const productPage = new ProductPage();
 const cartPage = new CartPage();
 
-When("I open cart from cart page", () => {
-  homePage.openCart();
+When("I search product before adding to cart", () => {
+  cy.fixture("userData").then((data) => {
+    homePage.search(data.validProduct);
+  });
 });
 
 When("I open product for cart", () => {
@@ -17,6 +19,10 @@ When("I open product for cart", () => {
 
 When("I add product from cart scenario", () => {
   productPage.addToCart();
+});
+
+When("I open cart from cart page", () => {
+  homePage.openCart();
 });
 
 Then("cart checkout page should be displayed", () => {

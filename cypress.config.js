@@ -12,6 +12,7 @@ const {
 module.exports = defineConfig({
   e2e: {
     baseUrl: "https://practicesoftwaretesting.com",
+    testIsolation: false,
 
     specPattern: [
       "cypress/e2e/project1/*.cy.js",

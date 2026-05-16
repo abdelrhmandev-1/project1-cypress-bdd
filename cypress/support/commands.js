@@ -1,5 +1,5 @@
-Cypress.Commands.add("getByData", (selector) => {
-  return cy.get(`[data-test="${selector}"]`);
+Cypress.Commands.add("getByData", (selector, options = {}) => {
+  return cy.get(`[data-test="${selector}"]`, options);
 });
 
 Cypress.Commands.add("visitHomePage", () => {

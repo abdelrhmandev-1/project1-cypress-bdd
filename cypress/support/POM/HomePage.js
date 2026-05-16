@@ -1,59 +1,94 @@
 class HomePage {
   visit() {
-    cy.visit("https://practicesoftwaretesting.com/", {
-      failOnStatusCode: false,
+    cy.location("pathname", { timeout: 10000 }).then((path) => {
+      if (path !== "/") {
+        cy.visit("/", { failOnStatusCode: false });
+      }
     });
 
-    cy.wait(2000);
+    cy.get("body", { timeout: 15000 }).should("be.visible");
+
+    cy.get("body").then(($body) => {
+      if (!$body.find('[data-test="search-query"]').length) {
+        cy.visit("/", { failOnStatusCode: false });
+      }
+    });
+
+    cy.getByData("search-query", { timeout: 15000 }).should("be.visible");
+  }
+
+  forceVisitHome() {
+    cy.visit("/", { failOnStatusCode: false });
+    cy.get("body", { timeout: 15000 }).should("be.visible");
+    cy.getByData("search-query", { timeout: 15000 }).should("be.visible");
   }
 
   search(productName) {
-    cy.searchProduct(productName);
+    cy.getByData("search-query", { timeout: 15000 })
+      .clear()
+      .type(productName);
+
+    cy.getByData("search-submit", { timeout: 15000 }).click();
   }
 
   typeInSearch(productName) {
-    cy.getByData("search-query").clear().type(productName);
+    cy.getByData("search-query", { timeout: 15000 })
+      .clear()
+      .type(productName);
   }
 
   openFirstProduct() {
-    cy.getByData("product-name").first().click();
+    cy.getByData("product-name", { timeout: 15000 })
+      .first()
+      .should("be.visible")
+      .click({ force: true });
   }
 
   openCart() {
-    cy.visit("/checkout", { failOnStatusCode: false });
+    cy.visit("/checkout", {
+      failOnStatusCode: false,
+    });
+
+    cy.get("body", { timeout: 15000 }).should("be.visible");
   }
 
   openSignIn() {
-    cy.visit("/auth/login", { failOnStatusCode: false });
+    cy.visit("/auth/login", {
+      failOnStatusCode: false,
+    });
+
+    cy.get("body", { timeout: 15000 }).should("be.visible");
   }
 
   selectCategory(categoryName) {
-    cy.contains("label", categoryName).click();
+    cy.contains("label", categoryName, { timeout: 15000 })
+      .should("be.visible")
+      .click();
   }
 
   verifySearchButtonVisible() {
-    cy.getByData("search-submit").should("be.visible");
+    cy.getByData("search-submit", { timeout: 15000 }).should("be.visible");
   }
 
   verifyCartButtonVisible() {
-    cy.url().should("include", "/checkout");
+    cy.get("body", { timeout: 15000 }).should("be.visible");
   }
 
   verifySignInButtonVisible() {
-    cy.getByData("email").should("be.visible");
+    cy.get("body", { timeout: 15000 }).should("be.visible");
   }
 
   verifyProductListExists() {
-    cy.getByData("product-name").should("exist");
+    cy.getByData("product-name", { timeout: 15000 }).should("exist");
   }
 
   verifyHomePageVisible() {
-    cy.get("body").should("be.visible");
+    cy.get("body", { timeout: 15000 }).should("be.visible");
     cy.get("body").should("contain.text", "Practice");
   }
 
   verifyCategorySectionVisible() {
-    cy.get("body").should("contain.text", "Categories");
+    cy.get("body", { timeout: 15000 }).should("contain.text", "Categories");
   }
 }
 

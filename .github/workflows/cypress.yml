@@ -25,5 +25,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Cypress BDD tests
+      - name: Run Cypress BDD feature tests
         run: npx cypress run --browser electron --spec "cypress/e2e/features/*.feature"
