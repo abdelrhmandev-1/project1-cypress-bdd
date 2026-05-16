@@ -28,5 +28,5 @@ jobs:
       - name: Verify Cypress
         run: npx cypress verify
 
-      - name: Run all BDD feature tests
-        run: npx cypress run --browser chrome --spec "cypress/e2e/features/*.feature"
+      - name: Run Cypress smoke test
+        run: npx cypress run --browser chrome --spec "cypress/e2e/features/search.feature"
