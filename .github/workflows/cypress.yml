@@ -11,6 +11,7 @@ jobs:
 
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      CYPRESS_VIDEO: false
 
     steps:
       - name: Checkout code
@@ -25,4 +26,4 @@ jobs:
         run: npm install
 
       - name: Run Cypress tests
-        run: npx cypress run --browser electron --spec "cypress/e2e/features/project2.feature"
+        run: npx cypress run --browser electron

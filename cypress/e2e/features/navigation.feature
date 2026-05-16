@@ -1,16 +1,10 @@
 Feature: Navigation
 
-  Scenario: 10 Navigate to sign in page
+  Scenario: Navigate to sign in page
     Given I open the home page
-    When I click sign in
-    Then sign in page should open
+    When I click sign in from navigation page
+    Then sign in page should be displayed
 
-  Scenario: 11 Navigate to cart page
+  Scenario: Verify navigation buttons
     Given I open the home page
-    When I open the cart page
-    Then cart page should open
-
-  Scenario: 12 Verify navigation buttons are visible
-    Given I open the home page
-    Then cart button should be visible
-    And sign in button should be visible
+    Then navigation buttons should be visible

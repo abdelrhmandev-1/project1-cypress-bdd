@@ -9,7 +9,10 @@ class ProductPage {
   }
 
   verifyProductAdded() {
-    cy.get("body").should("contain.text", "Product added to shopping cart");
+    cy.get("body").should(
+      "contain.text",
+      "Product added to shopping cart"
+    );
   }
 }
 

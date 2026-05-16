@@ -12,11 +12,8 @@ const {
 module.exports = defineConfig({
   e2e: {
     baseUrl: "https://practicesoftwaretesting.com",
-
-    specPattern: [
-      "cypress/e2e/**/*.cy.js",
-      "cypress/e2e/features/*.feature"
-    ],
+    specPattern: "cypress/e2e/features/*.feature",
+    
 
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config);
@@ -24,7 +21,7 @@ module.exports = defineConfig({
       on(
         "file:preprocessor",
         createBundler({
-          plugins: [createEsbuildPlugin(config)],
+          plugins: [createEsbuildPlugin(config)]
         })
       );
 

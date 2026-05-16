@@ -1,17 +1,12 @@
 Feature: Product
 
-  Scenario: 4 Open first product details
+  Scenario: Open first product details
     Given I open the home page
-    When I open the first product
-    Then product details should be visible
+    When I open product details from product page
+    Then product details page should be displayed
 
-  Scenario: 5 Search then open first product
+  Scenario: Search then open product details
     Given I open the home page
-    When I search for valid product
-    And I open the first product
-    Then product details should be visible
-
-  Scenario: 6 Product card is clickable
-    Given I open the home page
-    When I open the first product
-    Then product details should be visible
+    When I search product before opening details
+    And I open product details from product page
+    Then product details page should be displayed

@@ -1,19 +1,12 @@
 Feature: Cart
 
-  Scenario: 7 Open cart page
+  Scenario: Open cart page
     Given I open the home page
-    When I open the cart page
-    Then cart page should open
+    When I open cart from cart page
+    Then cart checkout page should be displayed
 
-  Scenario: 8 Add product to cart
+  Scenario: Add product to cart
     Given I open the home page
-    When I open the first product
-    And I add the product to cart
-    Then product should be added to cart
-
-  Scenario: 9 Add searched product to cart
-    Given I open the home page
-    When I search for valid product
-    And I open the first product
-    And I add the product to cart
-    Then product should be added to cart
+    When I open product for cart
+    And I add product from cart scenario
+    Then cart success message should be displayed

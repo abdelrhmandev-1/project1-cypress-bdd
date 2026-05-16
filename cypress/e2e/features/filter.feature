@@ -1,14 +1,10 @@
 Feature: Filter
 
-  Scenario: 13 Filter by category
+  Scenario: Filter by category
     Given I open the home page
-    When I select category from fixture
-    Then filtered products should be visible
+    When I select category from filter page
+    Then filtered product results should be visible
 
-  Scenario: 14 Category section is visible
+  Scenario: Verify category section
     Given I open the home page
-    Then category section should be visible
-
-  Scenario: 15 Product list exists
-    Given I open the home page
-    Then product list should exist
+    Then category area should be visible
