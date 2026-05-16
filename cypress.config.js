@@ -10,6 +10,11 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
+  retries: {
+    runMode: 2,
+    openMode: 0
+  },
+
   e2e: {
     baseUrl: "https://practicesoftwaretesting.com",
     testIsolation: false,
@@ -25,7 +30,8 @@ module.exports = defineConfig({
       on(
         "file:preprocessor",
         createBundler({
-          plugins: [createEsbuildPlugin(config)]
+          plugins: [createEsbuildPlugin(config)
+          ]
         })
       );
 
