@@ -38,13 +38,19 @@ describe('Software Testing Project 1 - Practice Software Testing', () => {
     cy.get('[data-test="password"]').should('be.visible');
   });
 
-  it('TC04 - Search field accepts product name', () => {
-    cy.searchProduct(userData.searchItem);
+  it('TC04 - Search for product name', () => {
+  cy.visit('/');
 
-    cy.get('[data-test="search-query"]').should('have.value', userData.searchItem);
-    cy.get('body').should('contain.text', userData.searchItem);
-    cy.url().should('include', 'practicesoftwaretesting');
-  });
+  cy.searchProduct(userData.searchItem);
+
+  cy.get('[data-test="product-name"]')
+    .should('exist');
+
+  cy.get('body')
+    .should('contain.text', userData.searchItem);
+
+  cy.url().should('include', 'practicesoftwaretesting');
+});
 
   it('TC05 - Product details page opens for Pliers', () => {
     cy.openProduct('Pliers');

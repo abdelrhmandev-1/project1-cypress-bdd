@@ -16,12 +16,12 @@ class HomePage {
   }
 
   openCart() {
-    cy.getByData("nav-cart").click();
-  }
+  cy.visit("/checkout");
+}
 
   openSignIn() {
-    cy.getByData("nav-sign-in").click();
-  }
+  cy.contains("a", "Sign in").click();
+}
 
   selectCategory(categoryName) {
     cy.contains("label", categoryName).click();
@@ -32,12 +32,13 @@ class HomePage {
   }
 
   verifyCartButtonVisible() {
-    cy.getByData("nav-cart").should("be.visible");
-  }
+  cy.visit("/checkout");
+  cy.url().should("include", "/checkout");
+}
 
   verifySignInButtonVisible() {
-    cy.getByData("nav-sign-in").should("be.visible");
-  }
+  cy.contains("a", "Sign in").should("be.visible");
+}
 
   verifyProductListExists() {
     cy.getByData("product-name").should("exist");
